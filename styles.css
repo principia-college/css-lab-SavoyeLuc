@@ -1,0 +1,542 @@
+/*************************************
+CSS
+Selectors
+element - All elements with that name
+.class - All elements with that class
+#id - All elements with that id
+**************************************/
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+*, *::before, *::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+:root {
+   --primary-color: #db313b; /* red from png */
+   --secondary-color: #251b17; /* Brown from png */
+   --accent-color: #faebcf;
+   --background-color: #251b17;
+   --text-color: #faebcf;
+   --light-text: #faebcf;
+}
+
+body {
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   line-height: 1.6;
+   color: #333;
+   background-color: #251b17;
+}
+
+.container {
+   width: 90%;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 20px 0;
+}
+
+header {
+   background-color: #251b17;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   position: fixed;
+   width: 100%;
+   top: 0;
+   left: 0;
+   z-index: 1000;
+}
+
+header .container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.logo img {
+   height: 100px;
+   width: auto;
+}
+
+/* NAV BAR */
+nav ul {
+   display: flex;
+   list-style: none;
+}
+
+nav ul li {
+   margin-left: 30px;
+}
+
+nav ul li a {
+   text-decoration: none;
+   color: var(--text-color);
+   font-weight: 500;
+   transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+   color: var(--primary-color);
+}
+
+
+
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+   nav ul {
+       flex-direction: column;
+       display: none;  /*Toggle with JavaScript for interactivity */
+   }
+   
+   nav ul.show {
+       display: flex;
+   }
+
+   nav ul li {
+       margin: 15px 0;
+   }
+}
+
+
+
+/* HERO */
+#hero {
+   /* Define the height of the hero section */
+   height: 100vh; /* Full viewport height */
+   
+   /* Remove background properties since we're using an img tag */
+   /* background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat; */
+   
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   color: var(--light-text);
+   text-align: center;
+   overflow: hidden; /* Ensure child elements don't overflow */
+}
+
+
+
+/* Overlay */
+#hero::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+   z-index: 1;
+}
+
+/* Hero Image Styling */
+.hero-image {
+   position: absolute; /* Position absolutely within #hero */
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   z-index: 0; /* Ensure it sits behind the overlay and content */
+}
+
+.hero-image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover; /* Ensure the image covers the container */
+}
+
+/* Hero Content Styling */
+.hero-content {
+   position: relative;
+   z-index: 2; /* Ensure it sits above the overlay and image */
+   max-width: 800px;
+   padding: 20px;
+}
+
+.hero-content h1 {
+   font-size: 4.2em;
+}
+.hero-content p {
+   font-size: 2em;
+}
+
+
+/* Button */
+.cta-button {
+   display: inline-block;
+   padding: 15px 30px;
+   background-color: var(--primary-color);
+   color: var(--light-text);
+   text-decoration: none;
+   border-radius: 5px;
+   font-weight: 600;
+   margin-top: 40px;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+   transform: scale(1.05);
+}
+
+
+
+
+/* Features Area */
+#features {
+   padding: 80px 0;
+   background-color: #4a372d;
+   text-align: center;
+}
+
+#features h2 {
+   font-size: 2.5em;
+   margin-bottom: 40px;
+   color: var(--secondary-color);
+}
+
+.features-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 30px;
+}
+
+.feature-item {
+   padding: 20px;
+   background-color: #251b17;
+   border-radius: 10px;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-item img {
+   width: auto;
+   height: 120px;
+   margin-bottom: 20px;
+}
+
+.feature-item h3 {
+   font-size: 1.5em;
+   margin-bottom: 10px;
+   color: var(--primary-color);
+}
+
+.feature-item p {
+   font-size: 1em;
+   color: var(--text-color);
+}
+
+
+/* Gallery */
+#gallery {
+   padding: 80px 0;
+   background-color: var(--background-color);
+   text-align: center;
+}
+
+#gallery h2 {
+   font-size: 2.5em;
+   margin-bottom: 40px;
+   color: var(--secondary-color);
+}
+
+.gallery-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: 20px;
+}
+
+.gallery-grid img {
+   width: 100%;
+   height: 200px;
+   object-fit: cover;
+   border-radius: 10px;
+   transition: transform 0.3s ease, opacity 0.3s ease;
+   cursor: pointer;
+}
+
+.gallery-grid img:hover {
+   transform: scale(1.05);
+   opacity: 0.8;
+}
+
+/*reviews section*/
+/* General Section Styling */
+#reviews {
+   background-color: var(--background-color);
+   color: var(--text-color);
+   text-align: center;
+   padding: 50px 20px;
+   overflow: hidden;
+}
+
+/* Review Header Styling */
+.review-header {
+   font-family: 'Oswald', sans-serif;
+   font-size: 2.5rem;
+   font-weight: 700;
+   color: var(--accent-color);
+   text-align: center;
+   margin-bottom: 30px;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   position: relative;
+   display: block; /* Ensure it takes full width */
+   width: 100%; /* Center within container */
+   padding-bottom: 10px;
+}
+
+/* Optional: Center underline */
+.review-header::after {
+   content: '';
+   position: absolute;
+   width: 50px;
+   height: 4px;
+   background-color: var(--primary-color);
+   bottom: 0;
+   left: 50%;
+   transform: translateX(-50%);
+   border-radius: 2px;
+}
+
+/* Title Styling */
+#reviews h2 {
+   font-family: 'Oswald', sans-serif;
+   font-size: 2.5rem;
+   font-weight: 700;
+   color: var(--accent-color);
+   text-align: center;
+   margin-bottom: 30px;
+   display: flex;
+   justify-content: center;
+}
+
+/* Review Container */
+.reviews-grid {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   width: 100%;
+   height: 200px;
+}
+
+/* Individual Review */
+.review-item {
+   position: absolute;
+   width: 60%;
+   max-width: 500px;
+   padding: 20px;
+   background-color: #771010e2;
+   border-radius: 10px;
+   color: var(--light-text);
+   font-size: 1.2rem;
+   font-family: Arial, sans-serif;
+   text-align: center;
+   transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+/* Active (Middle) Review */
+.review-item.active {
+   transform: scale(1);
+   opacity: 1;
+   z-index: 3;
+}
+
+/* Left Review (Fading Away) */
+.review-item.left {
+   transform: translateX(-200px) scale(0.8);
+   opacity: 0.5;
+   z-index: 2;
+}
+
+/* Right Review (Fading Away) */
+.review-item.right {
+   transform: translateX(200px) scale(0.8);
+   opacity: 0.5;
+   z-index: 2;
+}
+
+/* Social Media Icon Size and Color */
+.social-media a {
+   color: var(--light-text);
+   margin: 0 10px;
+}
+
+/*footer*/
+
+
+/* Responsive area */
+@media (max-width: 1200px) {
+   #hero h1 {
+       font-size: 2.5em;
+   }
+
+   #features h2,
+   #gallery h2,
+   #reviews h2,
+   #contact h2 {
+       font-size: 2em;
+   }
+}
+
+@media (max-width: 992px) {
+   .features-grid,
+   .gallery-grid,
+   .reviews-grid {
+       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   }
+}
+
+@media (max-width: 768px) {
+   header .container {
+       flex-direction: column;
+       align-items: flex-start;
+   }
+
+   nav ul {
+       flex-direction: column;
+       width: 100%;
+   }
+
+   nav ul li {
+       margin: 10px 0;
+   }
+
+   #hero {
+       height: auto;
+       padding: 60px 0;
+   }
+
+   .hero-content {
+       max-width: 100%;
+       text-align: center;
+   }
+
+   .features-grid,
+   .gallery-grid,
+   .reviews-grid {
+       grid-template-columns: 1fr;
+   }
+}
+
+@media (max-width: 576px) {
+   #hero h1 {
+       font-size: 2em;
+   }
+
+   #hero p {
+       font-size: 1em;
+   }
+
+   .cta-button {
+       padding: 10px 20px;
+       font-size: 0.9em;
+   }
+}
+
+/* Footer Styling */
+footer {
+   background-color: var(--secondary-color); /* Cohesive theme */
+   color: var(--light-text);
+   text-align: center;
+   padding: 20px 0;
+   width: 100%;
+   position: relative; /* Default positioning */
+   bottom: 0;
+   left: 0;
+}
+
+/* Footer Container */
+.footer-content {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+/* Social Media Icons */
+.social-media {
+   display: flex;
+   gap: 15px;
+   margin-bottom: 10px;
+}
+
+.social-media a {
+   color: var(--light-text);
+   transition: color 0.3s ease-in-out;
+}
+
+.social-media a:hover {
+   color: var(--primary-color); /* Adds a hover effect */
+}
+
+/* Sticky Footer for Full Page Scroll */
+body {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+footer {
+   margin-top: auto;
+}
+
+/* Technical Specifications Section */
+#technical-specs {
+   background-color: var(--background-color);
+   color: var(--text-color);
+   text-align: center;
+   padding: 50px 20px;
+}
+
+/* Section Header */
+.specs-header {
+   font-family: 'Oswald', sans-serif;
+   font-size: 2.5rem;
+   font-weight: 700;
+   color: var(--accent-color);
+   margin-bottom: 30px;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+}
+
+/* Specs Grid Layout */
+.specs-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+   gap: 15px;
+   max-width: 1000px;
+   margin: 0 auto;
+}
+
+/* Individual Spec Box */
+.spec-item {
+   background-color: rgba(119, 15, 22, 0.9); /* Slightly transparent red */
+   color: var(--light-text);
+   padding: 15px;
+   font-size: 1.1rem;
+   font-family: Arial, sans-serif;
+   border-radius: 8px;
+   text-align: center;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+   transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.spec-item:hover {
+   transform: scale(1.05);
+   background-color: var(--primary-color);
+}
